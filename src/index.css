@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p, h1{
+  color: white;
+}
+
+@layer components {
+  .tab-item {
+    @apply flex items-center transition-colors text-gray-400 hover:cursor-pointer hover:text-gray-500 font-semibold text-xl mt-3  p-4 rounded-lg;
+  }
+
+  .tab-item_active {
+    @apply bg-slate-700 text-teal-400 hover:text-teal-400
+  }
+
+  .tab-icon {
+    @apply text-[30px] mr-4
+  }
+}
+
+
+/*//////////////////////////////////TABLE-ANTD//////////////////////////////////////////////*/
+ .ant-table-cell{
+  @apply text-slate-100  text-xl font-medium bg-slate-800 hover:border-slate-900
+  
+}
+
+.ant-table-wrapper .ant-table-thead >tr>th {
+  @apply text-slate-400  text-3xl font-medium bg-slate-900 
+  
+}
+
+ .table-striped-rows tr:nth-child(n) td {
+  @apply  border-slate-800 
+}
+
+.ant-table-tbody > tr:last-child > td {
+  @apply border-none
+} 
+
+/*скрыл разделитель в заголовке*/
+:where(.css-dev-only-do-not-override-1m62vyb).ant-table-wrapper .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before, :where(.css-dev-only-do-not-override-1m62vyb).ant-table-wrapper .ant-table-thead >tr>td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  @apply relative 
+}
+
+.ant-table-row:hover td {
+  background: #0f172a !important;
+  color: #2dd4bf;
+  /* cursor: pointer; */
+}
