@@ -6,7 +6,9 @@ import { useAppSelector } from '../hooks/redux'
 import { Tabs } from '../common'
 import Column from 'antd/es/table/Column'
 import axios from 'axios'
-import VncViewer from './VncViewer'
+import VncViewer from './VncButton'
+import VncConnectionApp from './VncButton'
+import VncButton from './VncButton'
 
 const TheTable = () => {
     const { activeTab } = useAppSelector(state => state.table)
@@ -48,7 +50,7 @@ const TheTable = () => {
             render: () => (
                 <Space size='middle'>
                     <a onClick={handleConnect} className='text-teal-400 text-lg'>
-                        Управление
+                        <VncButton ipAddress='192.168.1.100' />
                     </a>
                     <a className='text-teal-400 text-lg'>Просмотр</a>
                 </Space>
@@ -81,6 +83,7 @@ const TheTable = () => {
                 dataSource={currentTableData()}
             />
             {/* <VncViewer url={'192.168.62.187:5900'} /> */}
+            <VncButton ipAddress='192.168.1.100' />
         </div>
     )
 }

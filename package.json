@@ -11,19 +11,15 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
-    "@novnc/novnc": "^1.4.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/novnc": "0.0.27",
     "antd": "^5.7.0",
     "axios": "^1.4.0",
-    "guacamole-common-js": "^1.5.0",
-    "novnc": "^1.2.0",
-    "novnc-core": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1"
   },
   "devDependencies": {
-    "@types/novnc-core": "^0.1.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
