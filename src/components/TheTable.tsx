@@ -1,5 +1,5 @@
 import { Space, Table } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DATA_DISPATCHERS, DATA_SKUD, DATA_TSON } from '../common/data'
 import { ITableData } from '../models'
 import { useAppSelector } from '../hooks/redux'
@@ -12,14 +12,15 @@ import VncButton from './VncButton'
 
 const TheTable = () => {
     const { activeTab } = useAppSelector(state => state.table)
+    const [ipAddress, setIpAddress] = useState<string>('')
+    const url = `https://novnc.com/noVNC/vnc.html?autoconnect=true&host=${ipAddress}&port=5900&password=40552169`
 
-    const [connected, setConnected] = useState(false)
+    useEffect(() => {
+        ipAddress && window.open(url, '_blank')
+    }, [ipAddress])
 
-    const handleConnect = async () => {
-        //     try {
-        //         const response = await axios.get('192.168.62.187')
-        //     } catch (err) {
-        //     }
+    const handleButtonClick = (record: ITableData) => {
+        setIpAddress(record.ip)
     }
 
     const columns = [
@@ -47,12 +48,12 @@ const TheTable = () => {
             title: 'Action',
             dataIndex: '',
             key: 'x',
-            render: () => (
+            render: (text: any, record: ITableData) => (
                 <Space size='middle'>
-                    <a onClick={handleConnect} className='text-teal-400 text-lg'>
-                        <VncButton ipAddress='192.168.1.100' />
+                    <a onClick={() => handleButtonClick(record)} className='text-teal-400 text-lg'>
+                        управление
                     </a>
-                    <a className='text-teal-400 text-lg'>Просмотр</a>
+                    <a className='text-teal-400 text-lg'>ккенкенк</a>
                 </Space>
             )
         }
@@ -79,11 +80,11 @@ const TheTable = () => {
                 pagination={false}
                 // showHeader={false}
                 // rowClassName={'table-border-bottom'}
+                // rowSelection={rowSelection}
                 columns={columns}
                 dataSource={currentTableData()}
             />
             {/* <VncViewer url={'192.168.62.187:5900'} /> */}
-            <VncButton ipAddress='192.168.1.100' />
         </div>
     )
 }

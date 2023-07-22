@@ -4,7 +4,7 @@ import TheTable from './components/TheTable'
 
 const App = () => {
     return (
-        <div className='bg-slate-900 h-[100dvh] 2-[100dvw] flex'>
+        <div className='bg-slate-900 min-h-[100dvh] flex'>
             <SideBar />
             <TheTable />
             {/* <VncDisplay url='wss://143.62.97.69:5991' /> */}

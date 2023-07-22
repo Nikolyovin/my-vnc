@@ -12,7 +12,7 @@ const SideBar = () => {
     const styleTabItem: (n: string) => string = n => (activeTab != n ? 'tab-item' : 'tab-item tab-item_active')
 
     return (
-        <aside className='bg-slate-800 w-[15dvw] h-[100dvh] px-14 py-20'>
+        <aside className='bg-slate-800 min-w-[15dvw]  px-14 py-20'>
             <p className='text-3xl mb-40 font-semibold text-teal-400'>Отдел 169</p>
             <div className='tab-list'>
                 <div onClick={() => changeActiveTab(Tabs.SKUD)} id='1' className={styleTabItem(Tabs.SKUD)}>
