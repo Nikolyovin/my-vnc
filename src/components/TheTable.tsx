@@ -9,7 +9,7 @@ const TheTable = () => {
     const { activeTab } = useAppSelector(state => state.table)
     const [ipAddress, setIpAddress] = useState<string>('')
     const [isViewOnly, setIsViewOnly] = useState<boolean>(false)
-
+    ///neststst
     const url = `https://novnc.com/noVNC/vnc.html?autoconnect=true&host=${ipAddress}&port=5900&password=40552169&view_only=${isViewOnly}`
 
     useEffect(() => {
