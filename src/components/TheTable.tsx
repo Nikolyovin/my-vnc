@@ -4,23 +4,26 @@ import { DATA_DISPATCHERS, DATA_SKUD, DATA_TSON } from '../common/data'
 import { ITableData } from '../models'
 import { useAppSelector } from '../hooks/redux'
 import { Tabs } from '../common'
-import Column from 'antd/es/table/Column'
-import axios from 'axios'
-import VncViewer from './VncButton'
-import VncConnectionApp from './VncButton'
-import VncButton from './VncButton'
 
 const TheTable = () => {
     const { activeTab } = useAppSelector(state => state.table)
     const [ipAddress, setIpAddress] = useState<string>('')
-    const url = `https://novnc.com/noVNC/vnc.html?autoconnect=true&host=${ipAddress}&port=5900&password=40552169`
+    const [isViewOnly, setIsViewOnly] = useState<boolean>(false)
+
+    const url = `https://novnc.com/noVNC/vnc.html?autoconnect=true&host=${ipAddress}&port=5900&password=40552169&view_only=${isViewOnly}`
 
     useEffect(() => {
         ipAddress && window.open(url, '_blank')
     }, [ipAddress])
 
-    const handleButtonClick = (record: ITableData) => {
+    const handleClickControl = (record: ITableData) => {
         setIpAddress(record.ip)
+        setIsViewOnly(false)
+    }
+
+    const handleClickViewOnly = (record: ITableData) => {
+        setIpAddress(record.ip)
+        setIsViewOnly(true)
     }
 
     const columns = [
@@ -50,10 +53,12 @@ const TheTable = () => {
             key: 'x',
             render: (text: any, record: ITableData) => (
                 <Space size='middle'>
-                    <a onClick={() => handleButtonClick(record)} className='text-teal-400 text-lg'>
-                        управление
+                    <a onClick={() => handleClickControl(record)} className='text-teal-400 text-lg'>
+                        Управление
                     </a>
-                    <a className='text-teal-400 text-lg'>ккенкенк</a>
+                    <a onClick={() => handleClickViewOnly(record)} className='text-teal-400 text-lg'>
+                        Просмотр
+                    </a>
                 </Space>
             )
         }
